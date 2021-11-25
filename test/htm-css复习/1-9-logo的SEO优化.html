@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* logo里面放一个h1标签，提升权重 */
+    /* h1里面放一个链接，可以返回首页，把logo的背景图片给链接即可 */
+    /* 为了利于搜索引擎收录，链接里面放文字但不显示 */
+    /* 给链接一个title属性 */
+    .logo {
+      width: 200px;
+      height: 200px;
+    }
+    .logo a{
+      display: block;
+      width: 200px;
+      height: 200px;
+      background-color: url(../logo.png);
+      /* 隐藏文字 */
+      font-size: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+    <a href="index.html" title="logo">这是logo,但文字不显示</a>
+  </div>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+  <a href=""></a>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .position{
+      width: 100px;
+      height: 100px;
+      background-position: 20px center;
+      /* 背景图片固定不滚动 */
+      background-attachment: fixed;   
+      /* font 复合写法 行高继承 */
+      font:12px/1.5 "Microsoft YaHei"
+
+    }
+    .child{
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+<!-- 小的装饰图标可用background-image控制，而不用img -->
+
+<div class="position">
+       <div class="child">行高继承</div>
+</div>
+</body>
+
+</html>

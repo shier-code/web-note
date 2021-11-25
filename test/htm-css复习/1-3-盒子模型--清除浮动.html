@@ -1,0 +1,85 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-11-11 10:09:38
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-20 11:43:46
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 如果不设置width padding不会撑开盒子 */
+    /* 行内元素由于不能设置width，所以margin:0 auto 居中无效，做法是给父元素设置text-align:center */
+    .father {
+      width: 200px;
+      height: 200px;
+      background-color: bisque;
+      margin-top: 50px;
+    }
+
+    /* 两个嵌套的父子关系块元素，父子元素都设置向上外边距，此时只有父元素会塌陷较大外边距值，子元素外边距值无效 */
+    /* 解决方式：给父元素定义上边框，上内边距或overflow:hidden */
+    .child {
+      width: 100px;
+      height: 100px;
+      background-color: blueviolet;
+      margin-top: 50px;
+    }
+
+    /* 清除浮动本质：父元素没有给高度，子元素脱离文档流，父元素坍塌 */
+
+    /* 额外标签法 ：最后一个浮动元素后添加空div 设置clear:both*/
+    /* 父元素添加overflow:hidden */
+    /* 父元素 :after伪元素法 */
+    .clearfix:after {
+      content: "";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+
+    /* 双伪元素清除浮动 */
+    .clearfix:before,
+    .clearfix:after {
+      content: "";
+      display: table;
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+
+      *zoom: 1
+    }
+
+    .shier {
+      width: 100px;
+      background-color: aquamarine;
+      margin: 0 auto;
+    }
+
+    /* ps切图插件 cutterman */
+    /* 行内元素添加浮动、绝对定位或固定定位，就可直接设置宽高 */
+    /* 块级元素添加浮动，绝对定位或固定定位，不给宽高就不是占满整行，而是内容的大小 */
+    /* 浮动元素指挥压住下面标准流的盒子，不会压住盒子中的文字和图片 */
+    /* 相对/绝对定位会压住下面标准流左右内容 */
+  </style>
+</head>
+
+<body>
+  <div class="father clearfix">
+    <div class="child"></div>
+  </div>
+  <span class="shier">2222</span>
+</body>
+
+</html>

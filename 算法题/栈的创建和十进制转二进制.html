@@ -1,0 +1,67 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-16 10:35:05
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-16 10:38:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Stack() {
+      this.item = []
+      //1 将元素压入栈
+      Stack.prototype.push = function (el) {
+        this.item.push(el)
+      }
+      //2、从栈中取出元素
+      Stack.prototype.pop = function (el) {
+        return this.item.pop()
+      }
+      //3、查看一下栈顶元素
+      Stack.prototype.peek = function (el) {
+        return this.item[this.items.length - 1]
+      }
+      //4、判断栈是否为空
+      Stack.prototype.isEmpty = function () {
+        return this.item.length === 0
+      }
+      // 5、toString
+      Stack.prototype.toString = function () {
+        let resultString = ''
+        for (let i = 0; i < this.item.length; i++) {
+          resultString += this.item[i] + ''
+        }
+        return resultString
+      }
+    }
+    function dec2bin(dec) {
+      //定义栈对象，保存余数
+      var stack = new Stack()
+      while (dec > 0) {
+        //获取余数并放入栈中
+        stack.push(dec % 2)
+        //获取整除后结果作为下一次运算的数字
+        dec = Math.floor(dec / 2)
+      }
+      //从栈中去除0、1
+      var binStr = ''
+      while (!stack.isEmpty()) {
+        binStr += stack.pop()
+      }
+      return binStr
+    }
+    alert(dec2bin(100))
+  </script>
+</body>
+
+</html>

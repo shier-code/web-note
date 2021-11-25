@@ -1,0 +1,30 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+    <script>
+        console.log('1, time = ' + new Date().toString())
+        setTimeout(macroCallback, 0);
+        new Promise(function (resolve, reject) {
+            console.log('2, time = ' + new Date().toString())
+            resolve();
+            console.log('3, time = ' + new Date().toString())
+        }).then(microCallback);
+
+        function macroCallback() {
+            console.log('4, time = ' + new Date().toString())
+        }
+
+        function microCallback() {
+            console.log('5, time = ' + new Date().toString())
+        }
+    </script>
+</body>
+
+</html>

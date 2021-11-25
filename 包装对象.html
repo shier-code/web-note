@@ -1,0 +1,36 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-09-01 21:55:08
+ * @LastEditors: went
+ * @LastEditTime: 2021-06-30 17:54:10
+-->
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+
+<body>
+    <button onclick="handleClick(this)">按钮</button>
+    <script>
+        function handleClick(_this) {
+            debugger
+        }
+        var num = 3;
+        console.log(typeof (num));
+        var numObj = new Number(3);
+        console.log(typeof (numObj));
+
+
+        var a = new String(123)   //如果没转换为对象，设置的属性输出为undefined
+        a.hello = 'hello';
+        console.log(a.hello)
+    </script>
+</body>
+
+</html>

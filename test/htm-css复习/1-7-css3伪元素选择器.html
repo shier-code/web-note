@@ -1,0 +1,36 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-11-11 17:21:00
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-20 12:09:05
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* before和after创建一个伪元素属于行内元素 */
+    /* 元素在文档树中找不到 */
+    /* 语法：element::before() */
+    /* bofore和after必须要有content属性 */
+    /* bofore在父元素中的内容的前面创建元素 */
+    .test::before {
+      content: "我";
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test">
+    是
+  </div>
+</body>
+
+</html>

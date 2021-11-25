@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         *promised对象:代表未来每个将要发生的事件
+         *
+         */
+        let promise = new Promise((resolve, rejected) => {
+
+            //初始化pending状态,pending:初始化
+            console.log('11111'); //同步执行
+            //执行异步操作,发送ajax,开启定时器
+            setTimeout(() => {
+                console.log('333333')
+                //根据异步任务的返回结果修改promise状态
+                resolve('shier'); //自动修改promise为成功状态
+            }, 2000)
+        })
+        console.log('2222222');
+        promise.then((data) => {
+            console.log(data);
+        }, (err) => {
+
+        })
+        //////////////////////////////////////////////////
+        function getNews(url) {
+            let promise = new Promise((resolve, rejected) => {
+                //创建实例对象
+                let xmlHttp = new XMLHttpRequest();
+                //绑定监听 readyState
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState === 4) {
+                        if (xmlHttp.status === 200) {
+                            //请求成功
+                            console.log(xmlHttp.responseText);
+                            resolve(xmlHttp.responseText)
+                        } else {
+                            rejected('err')
+                        }
+
+                    }
+                };
+                //open:设置请求的方式以及url
+                xmlHttp.open('GET', url);
+                //发送
+                xmlHttp.send();
+            })
+            return promise;
+        }
+        getNews().then(() => {}, () => {})
+
+    </script>
+</body>
+
+</html>

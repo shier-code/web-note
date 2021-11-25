@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>111</div>
+    <div>111</div>
+    <div>111</div>
+    <script>
+        /**
+         * 1、Array.from(v):将伪数组或可遍历对象转换为真数组
+         * 2、Array.of(v1,v1,v3)将一系列值转换为数组
+         * 3、find(function(value,index,arr){        找出第一个满足条件返回true的元素
+         *          return true})
+         */
+        let tagArr = document.getElementsByTagName('div');
+        console.log(tagArr);
+        Array.from(tagArr).forEach(function (item, index) {
+            console.log(item);
+        })
+        let arrOf = Array.of(2, 3, undefined, NaN);
+        console.log(arrOf);
+        let arrFind = [2, 3, 4, 5, 6];
+        let res = arrFind.find(function (item, index) {
+            return item > 3;
+        })
+        console.log(res);
+    </script>
+</body>
+
+</html>

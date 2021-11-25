@@ -1,0 +1,166 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-18 15:44:33
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-19 15:56:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function linkedList() {
+      //内部类：节点类
+      function Node(data) {
+        this.data = data
+        this.next = null
+      }
+      //属性
+      this.head = null
+      this.length = 0
+      //1、追加方法
+      linkedList.prototype.append = function (data) {
+        //1.创建新节点
+        var newNode = new Node(data)
+
+        if (this.length === 0) {  //2.1 是第一个节点
+          this.head = newNode
+        } else {                  //2.2 不是第一个节点
+          var current = this.head
+          //找到最后一个节点
+          while (current.next) {
+            current = current.next
+          }
+          current.next = newNode
+        }
+        //3
+        this.length += 1
+      }
+      //2、toString方法
+      linkedList.prototype.toString = function () {
+        //
+        var current = this.head
+        var listString = ""
+        //循环获取每个节点
+        while (current) {
+          listString += current.data + "-"
+          current = current.next
+        }
+        return listString
+      }
+      //3、insert
+      linkedList.prototype.insert = function (data, position) {
+        //对position进行越界判断
+        if (position < 0 || position > this.length) return false
+        //根据data创建节点
+        var newNode = new Node(data)
+        //判断插入位置是否是第一个
+        if (position === 0) {
+          newNode.next = this.head
+          this.head = newNode
+        } else {
+          var index = 0
+          var current = this.head
+          var previous = null
+          while (index++ < position) {
+            previous = current
+            current = current.next
+          }
+          newNode.next = current
+          previous.next = newNode
+        }
+        this.length += 1;
+        return true
+      }
+    }
+    //4、获取对应位置的data
+    linkedList.prototype.get = function (position) {
+      //对position进行越界判断
+      if (position < 0 || position >= this.length) return null
+      //获取对应位置的data
+      var current = this.head
+      var index = 0
+      while (index < position) {
+        current = current.next
+        index++
+      }
+      return current.data
+    }
+    //6、update
+    linkedList.prototype.update = function (position, newData) {
+      //对position进行越界判断
+      if (position < 0 || position >= this.length) return false
+      //获取对应位置的data
+      var current = this.head
+      var index = 0
+      while (index < position) {
+        current = current.next
+        index++
+      }
+      current.data = newData
+      return true
+    }
+    //5、indexOf
+    linkedList.prototype.indexOf = function (iData) {
+      var current = this.head
+      var index = 0
+      while (current) {
+        if (current.data == iData) {
+          return index
+        }
+        current = current.data
+        index += 1
+
+      }
+      return -1
+    }
+
+    //7 removeAt
+    linkedList.prototype.removeAt = function (position) {
+      //对position进行越界判断
+      if (position < 0 || position >= this.length) return false
+
+      if (position === 0) {
+        this.head = this.head.next
+      } else {
+        var index = 0
+        var current = this.head
+        var previous = null
+        while (index++ < position) {
+          previous = current
+          current = current.next
+        }
+        previous.next = current.next
+        this.length -= 1
+        return true
+      }
+    }
+
+    //8 remove
+    linkedList.prototype.remove = function (data) {
+      var position = this.indexOf(data)
+      return this.removeAt(position)
+    }
+
+
+    var list = new linkedList()
+    list.append('abc')
+    list.append('nba')
+    list.insert('abc', 1)
+    list.update(1, 'cba')
+    alert(list.indexOf('abc'))
+    list.removeAt(1)
+    alert(list)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<style type="text/css">
+	</style>
+</head>
+
+<body>
+
+</body>
+<script>
+	/**
+	1、必须用var声明变量；
+	2、禁止自定义函数中this指向window
+	3、创建eval作用域
+	4、对象不能有重名的属性
+	*/
+'use strict'
+name='shier'
+console.log(name);
+
+// function Person(name,age){
+// 	this.name=name;
+// 	this.age=age;
+// 	console.log(this)
+// }
+// Person('shier',18)       //err
+
+var str="NBA"
+eval("var str='CBA';console.log(str)");
+console.log(str)            //非严格模式eval没有自己的作用域  CBA
+</script>
+
+</html>

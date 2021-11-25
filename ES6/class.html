@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 1、通过class定义类和类的继承
+         * 2、在类中通过constructor定义构造方法
+         * 3、通过new创建类的实例
+         * 4、通过extends来实现类的继承
+         * 5、通过super来调用父类中的构造方法
+          */
+
+          //定义一个人物的类
+          class Person{
+              //构造方法
+              constructor(name,age){
+                this.name=name;
+                this.age=age;
+                // this. showName2=function(){
+                //     console.log(this.age);
+                // }
+              }
+              //一般方法
+              showName(){
+                  console.log(this.name);
+              }
+              static showAge(){
+                  console.log('------'+this.age);
+              }
+          }
+          let person=new Person('shier',18);
+          console.log(person);
+        //   person.showName2();
+          person.showName();
+          Person.showAge();
+
+          //定义子类
+          class ChildPerson extends Person{
+              constructor(name,age,salary){
+                  super(name,age);  //调用父类的构造方法
+                  this.salary=salary;
+              }
+              //父类方法重写
+            //   showName(){
+            //       console.log(this.name);
+            //   }
+          }
+          let childp=new ChildPerson('sb',25,10000);
+          console.log(childp);
+          childp.showName();
+          ChildPerson.showAge()
+    </script>
+</body>
+</html>

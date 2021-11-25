@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * 1、Object.assign(target,source1,source2) 将对象的属性复制到目标对象上
+         * 2、可操作__proto__
+         */
+      
+
+         let obj={};
+         let obj2={name:'shier',age:19};
+         let obj3={height:188};
+         Object.assign(obj,obj2,obj3);
+         console.log(obj);
+
+         let obj__={};
+         let obj__1={doller:100};
+         obj__.__proto__=obj__1;
+         console.log(obj__.doller);
+    </script>
+</body>
+
+</html>

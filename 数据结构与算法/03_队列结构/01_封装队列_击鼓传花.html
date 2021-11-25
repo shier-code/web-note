@@ -1,0 +1,70 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-16 11:25:02
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-16 14:16:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Queue() {
+      this.items = []
+
+      //将元素加入到队列
+      Queue.prototype.enqueue = function (el) {
+        this.items.push(el)
+      }
+      //从队列删除前端元素
+      Queue.prototype.dequeue = function (el) {
+        return this.items.shift(el)
+      }
+      //查看前端元素
+      Queue.prototype.front = function (el) {
+        return this.items[0]
+      }
+      Queue.prototype.toString = function (el) {
+        var resultString = ''
+        for (var i = 0; i < this.items.length; i++) {
+          resultString += this.items[i] + ' '
+        }
+        return resultString;
+      }
+    }
+    var queue = new Queue()
+    queue.enqueue('nba')
+    queue.enqueue('cba')
+    alert(queue)
+    //击鼓传花
+    function passGame(nameList, num) {
+      //创建一个队列
+      var queue = new Queue()
+      for (var i = 0; i < nameList.length; i++) {
+        queue.enqueue(nameList[i])
+      }
+      while (queue.size() > 1) {
+        //开始数数，不是num重新加入队列末尾，是num则删除
+        for (var i = 0; i < num - 1; i++) {
+          queue.enqueue(queue.dequeue())
+        }
+        //从队列中删除对应num的项
+        queue.dequeue()
+      }
+      //获取结果
+      var endName = queue.front()
+      return nameList.indexOf(endName)
+    }
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+          * 拷贝数据的方法：
+          1、直接赋值给变量
+          2、Object.assign()     //浅拷贝
+          3、Array.prototype.concat()  //浅拷贝
+          4、Array.prototype。slice()    //浅拷贝
+          5、JSON.parse(JSON.stringfy())    //深拷贝  ***拷贝的数组不能有函数
+         */
+
+        let obj = {
+            name: 'shier',
+            age: 18
+        };
+        let obj2 = Object.assign(obj);
+        console.log(obj2);  //'wade'
+        obj.name = "wade";
+        console.log(obj2);  //'wade'
+
+        let arr=[1,2,3,{name:'shier'}];
+        let arr2=arr.concat();
+        console.log(arr2);
+        arr2[1]='change';
+        console.log(arr);   //没改变
+        arr2[3].name='wade';
+        console.log(arr);   //改变了
+
+        let arr3=arr.slice();
+        arr3[3].name="anverson";
+        console.log(arr);   //改变了
+
+        let arr4=JSON.parse(JSON.stringify(arr));
+        arr4[3].name="duncan";
+        console.log(arr,arr4);  //原数组没改变
+    </script>
+</body>
+
+</html>

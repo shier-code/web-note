@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let list = [
+      {
+        lesMon: [
+          { id: "1", name: "tom", type: false }
+        ],
+        lesThu: [
+          { id: "2", type: false }
+        ],
+        lesWed: [
+          { id: "3", type: false }
+        ]
+      },
+      {
+        lesMon: [
+          { id: "4", type: false }
+        ],
+        lesThu: [
+          { id: "5", name: "jerry", type: false }
+        ]
+      }
+    ]
+
+    let listNew = [
+      {
+        lesMon: [
+          { id: "1", name: "tom", type: false }
+        ],
+        lesThu: [
+          { id: "2", type: false }
+        ],
+        lesWed: [
+          { id: "3", type: false }
+        ]
+      },
+      {
+        lesMon: [
+          { id: "4", type: false }
+        ],
+        lesThu: [
+          { id: "5", name: "jerry", type: false }
+        ]
+      }
+    ]
+    list.map(item => {
+      for (let key in item) {
+        if (item[key][0].id === "1" || item[key][0].id === "3") {
+          item[key][0].type = true
+        }
+      }
+    })
+    let a = [], b = [];
+    let aIndex = 0, bIndex = 0;
+    let aKey = "", bKey = "";
+    list.map((item, index) => {
+      for (let key in item) {
+        if (item[key][0].id === "5") {
+          a = item[key]
+          aIndex = index
+          aKey = key
+        }
+        if (item[key][0].id === "1") {
+          b = item[key]
+          bIndex = index
+          bKey = key
+        }
+      }
+
+    })
+    var c = b;
+    list[bIndex][bKey] = a;
+    list[aIndex][aKey] = c;
+    console.log('========', list);
+
+  </script>
+</body>
+
+</html>

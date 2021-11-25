@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         *用途:
+         *   可变参数,用来取代arguments(伪数组),...value是一个真实的数组,只能是最后部分形参
+         *   扩展运算符
+         *
+         */
+
+        function foo(a, ...value) {
+            value.forEach(function (item, index) {
+                console.log(item, index)
+            })
+        }
+        foo(10, 100, 1000) //100,1000
+
+        let arr = [1, 6];
+        let arr1 = [2, 3, 4, 5];
+        let str = 'shier';
+        arr = [1, ...arr1, 6];
+        console.log('arr', arr);
+        console.log(...arr1);
+        console.log(...str);
+    </script>
+</body>
+
+</html>

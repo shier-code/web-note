@@ -1,0 +1,74 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-16 14:28:49
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-16 15:38:20
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function PriorityQueue() {
+      function QueueElement(el, priority) {
+        this.el = el;
+        this.priority = priority
+      }
+      this.items = []
+      PriorityQueue.prototype.enqueue = function (el, priority) {
+        var queueElement = new QueueElement(el, priority)
+        // var queueElement = {
+        //   el,
+        //   priority
+        // }
+
+        //判断队列是否为空
+        if (this.items.length == 0) {
+          this.items.push(queueElement)
+        } else {
+          var added = false
+          for (var i = 0; i < this.items.length; i++) {
+            if (queueElement.priority < this.items[i].priority) {   //数值越小，优先就越大
+              this.items.splice(i, 0, queueElement)
+              added = true
+              break
+            }
+          }
+          if (!added) {
+            this.items.push(queueElement)
+          }
+        }
+      }
+      //从队列删除前端元素
+      PriorityQueue.prototype.dequeue = function (el) {
+        return this.items.shift(el)
+      }
+      //查看前端元素
+      PriorityQueue.prototype.front = function (el) {
+        return this.items[0]
+      }
+      PriorityQueue.prototype.toString = function (el) {
+        var resultString = ''
+        for (var i = 0; i < this.items.length; i++) {
+          resultString += this.items[i].el + '- ' + this.items[i].priority
+        }
+        return resultString;
+      }
+    }
+    var pq = new PriorityQueue()
+    pq.enqueue('shier', 100)
+    pq.enqueue('lx', 50)
+    alert(pq)
+  </script>
+</body>
+
+</html>

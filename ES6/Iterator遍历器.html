@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Iterator遍历器
+         * iterator是一种接口机制,为各种不同的数据结构提供一种访问机制
+         * 作用:
+         * 1 为各种不同的数据结构提供一种访问机制
+         * 2 使得数据结构的成员能够按某种次序排列
+         * 3 ES6创建了一种新的遍历命令for...of循环,目标接口部署了iterator才能通过for of遍历
+         * 工作原理:
+         * 1 创建一个指针对象(遍历器对象),指向数据结构的起始位置
+         * 2 第一次调用next方法,指针自动指向数据结构的第一个成员
+         * 3 接下来不断调用next方法,指针往后移动,直到指向最后一个成员
+         * 4 每调用next方法返回一个包含{value:done}的对象:value表示当前成员的值,done对应的布尔值表示当前的数据结构是否遍历结束
+         *  将iterator接口部署到指定的数据类型上，就可以使用for..of..去循环遍历
+           数组，字符串，arguments,set容器，map容器
+         */
+
+        //模拟指针对象
+        function myIterator(arr) {
+
+            let nextIndex = 0;
+            return {
+                next: function() {
+                   return nextIndex<arr.length? {value:arr[nextIndex++],done:false}:{value:undefined,done:true};
+                }
+            }
+        }
+        let arr=[1,2,3,null];
+        let iteratorObj=myIterator(arr);
+        console.log(iteratorObj.next());
+        console.log(iteratorObj.next());
+        console.log(iteratorObj.next());
+        console.log(iteratorObj.next());
+        //对象测试
+        let foo={
+            name:'shiere',
+            age:19
+        }
+    
+        // for(let i of foo)
+        // {
+        //     console.log(i);
+        // }
+        //当使用for of  去遍历某一个数据结构时首先去找symbol.iterator,找到了就去遍历
+        let targetDataa={
+            [Symbol.iterator]:function(){
+                let nextIndex=0;    //记录指针位置
+                return {
+                    next:function(){
+                        return nextIndex<this.length?{value:this[nextIndex++],done:false}:{value:undefined,done:true}
+                    }
+                }
+            }
+        }
+        //使用三点运算符，解构赋值是默认调用iterator接口
+        let arr2=[1,6];
+        let arr3=[2,3,4];
+        arr2=[2,...arr3,6];
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

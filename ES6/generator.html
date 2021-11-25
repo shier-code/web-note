@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <script>
+        /**
+      Generator函数：
+      1、ES6解决异步编程的方案之一
+      2、内部封存了不同状态的数据
+      3、用来生成遍历器对象
+      4、可暂停函数，yield暂停，next启动，每次返回的是yield后的表达式结果
+      特点：
+      funtion 和函数名之间有个*
+      内部yield表达式来定义不同的状态
+      */
+
+        //test
+        function* myGeneeator() {
+            console.log('start...');
+            let res = yield 'hello';
+            console.log(res);
+            console.log('暂停后，再次执行');
+            yield console.log('generator============');
+
+        }
+        let MG = myGeneeator(); //返回指针对象
+       
+         console.log(MG.next());
+        console.log(MG.next('传入参数'));
+        // console.log(MG.next());
+
+        //应用
+        function getNews(url) {
+            $.get(url, function (res) {
+                console.log(res);
+
+                let newUrl = 'http://152.136.185.210:8000/api/h8/home/multidata'; //假设该处url需要res作为参数
+                SX.next(newUrl);
+            })
+        }
+
+        function* sendXML() {
+            let newurl = yield getNews(
+            'http://152.136.185.210:8000/api/h8/home/multidata'); //url为下次调用next()传入的参数，指向P43
+            yield getNews(newurl)
+        }
+        let SX = sendXML();
+        SX.next()
+    </script>
+</body>
+
+</html>

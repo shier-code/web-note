@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * ES6添加的一种原始数据类型
+         * symbol对应的属性值是唯一的
+         * symbol值不能与其他数据进行计算,包括和字符串拼串
+         * for in,for of不会遍历对象中的symbol属性
+          */
+
+          let symbol=Symbol();
+          let obj={name:'shier',age:18};
+          obj[symbol]="hello";
+          console.log(obj);
+
+          let symbol2= Symbol(1);
+          let symbol3= Symbol(2);
+          console.log(symbol2===symbol3);   //false
+          console.log(symbol2,symbol3);   //用于区分
+    </script>
+</body>
+</html>
