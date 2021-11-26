@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2021-11-19 16:23:27
  * @LastEditors: went
- * @LastEditTime: 2021-11-19 16:51:58
+ * @LastEditTime: 2021-11-25 16:39:30
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +16,69 @@
 </head>
 
 <body>
-  <script>   
-    function set() { 
-      this.
+  <script>
+    function Set() {
+      this.items = {}
+
     }
+    //add
+    Set.prototype.add = function (value) {
+      if (this.has(value)) {
+        return false
+      }
+      this.items[value] = value
+      return true
+    }
+    //has
+    Set.prototype.has = function (value) {
+      return this.items.hasOwnProperty(value)
+    }
+    //remove
+    Set.prototype.remove = function (value) {
+      if (!this.has(value)) {
+        return false
+      }
+
+      delete this.items[value]
+      return true
+    }
+    //clear
+    Set.prototype.clear = function (value) {
+      this.items = {}
+    }
+    //size
+    Set.prototype.size = function (value) {
+      return Object.keys(this.items).length
+    }
+    //获取集合中所有的至
+    Set.prototype.values = function () {
+      return Object.keys(this.items)
+    }
+
+    //并集
+    Set.prototype.union = function (otherSet) {
+      let unionSet = new Set()
+      var values = this.values()
+      for (let i = 0; i < values.length; i++) {
+        unionSet.add(values[i])
+      }
+      values = otherSet.values()
+      for (let i = 0; i < values.length; i++) {
+        unionSet.add(values[i])
+      }
+      return unionSet
+    }
+
+    let setA = new Set()
+    setA.add('111')
+    setA.add('222')
+    setA.add('333')
+    let setB = new Set()
+    setB.add('444')
+    setB.add('555')
+    setB.add('333')
+    console.log(setA.union(setB));
+
   </script>
 </body>
 
