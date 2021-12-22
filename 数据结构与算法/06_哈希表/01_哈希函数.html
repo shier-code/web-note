@@ -1,0 +1,47 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-29 10:40:34
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-29 11:33:37
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //1 将字符串转成比较大的数字
+    //2 将大的数字压缩到数组范围之内(size)
+    function hashFunc(str, size) {
+      //定义hashCide变量，用于保存比较大的数字
+      var hashCode = 0
+      //霍纳算法 计算hashCode的值
+      for (let i = 0; i < str.length; i++) {
+        //获取每一个字符的unicode编码
+        hashCode = hashCode * 37 + str.charCodeAt(i)
+      }
+      //压缩 取余操作
+      let index = hashCode % size
+      return index
+    }
+
+    //test
+    console.log(hashFunc('anc', 7))
+    console.log(hashFunc('cba', 7))
+    console.log(hashFunc('shier', 7))
+    console.log(hashFunc('abc', 7))
+    console.log(hashFunc('lx', 7))
+    console.log(hashFunc('ccc', 7))
+    console.log(hashFunc('cca', 7))
+    console.log(hashFunc('asa', 7))
+  </script>
+</body>
+
+</html>

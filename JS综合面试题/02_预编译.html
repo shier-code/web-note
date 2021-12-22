@@ -1,0 +1,54 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-12-21 10:36:56
+ * @LastEditors: went
+ * @LastEditTime: 2021-12-21 14:12:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fn(a, c) {
+      console.log(a);
+      var a = 123
+      console.log(a);
+      console.log(c);
+      function a() { }
+      if (false) {
+        var d = 555
+      }
+      console.log(d);
+      console.log(b);
+      var b = function () { }    //函数表达式不会覆盖
+      console.log(b);
+      function c() { }
+      console.log(c);
+
+
+      //函数预编译阶段
+      //1、创建AO对象  2 找形参和变量的声明，作为AO对象属性，值为undefined
+      //3 实参和形参统一 4 找函数声明（相同命名会覆盖变量声明）
+      
+    }
+
+    fn(1, 2)
+
+    // AO: {
+    //  a:undefined 1   function a(){},     //相同命名会覆盖变量声明      
+   //   c:undefined 2,  function c() { }
+   //   d:undefined
+   //   b :undefined
+    // }
+  </script>
+</body>
+
+</html>

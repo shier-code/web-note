@@ -1,0 +1,49 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-12-21 10:36:56
+ * @LastEditors: went
+ * @LastEditTime: 2021-12-22 11:17:21
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //箭头函数的this是在定义函数时绑定，不是在执行时绑定
+    //箭头函数没有自己的this,内部的this指向外层代码块的this，因此不能作为构造函数
+
+    var x = 11
+    var obj = {
+      x: 22,
+      say: () => {
+        console.log(this.x);
+      }
+    }
+    obj.say()  //箭头函数不满足 obj.say.call(obj)   11
+    /**
+    * this是继承腹肌执行上下文的this,箭头函数本身与say平级，
+    * 箭头函数本身所在对象为obj,因此父级执行上下文为window
+    *
+   */
+
+    var obj = {
+      birth: 1990,
+      getAge: function () {
+        var b = this.birth
+        var fn = () => new Data().getFullYear() - this.birth   //this指向的是obj对象
+        return fn()
+      }
+    }
+    obj.getAge()
+  </script>
+</body>
+
+</html>

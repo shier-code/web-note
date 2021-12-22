@@ -1,0 +1,124 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2021-11-29 11:44:29
+ * @LastEditors: went
+ * @LastEditTime: 2021-11-29 15:32:27
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function HashTable() {
+      //属性
+      this.storage = []
+      this.count = 0   //当前已存放元素数量
+      this.limit = 7   //当前哈希表总长度
+      //哈希函数
+      HashTable.prototype.hashFunc = function (str, size) {
+        //定义hashCide变量，用于保存比较大的数字
+        var hashCode = 0
+        //霍纳算法 计算hashCode的值
+        for (let i = 0; i < str.length; i++) {
+          //获取每一个字符的unicode编码
+          hashCode = hashCode * 37 + str.charCodeAt(i)
+        }
+        //压缩 取余操作
+        let index = hashCode % size
+        return index
+      }
+      //插入/修改操作
+      HashTable.prototype.put = function (key, value) {
+        //根据key获取对应的index
+        var index = this.hashFunc(key, this.limit)
+        //根据index取出对应的bucket
+        var bucket = this.storage[index]
+        //判断该bucket是否为null
+        if (bucket == null) {
+          bucket = []
+          this.storage[index] = bucket
+        }
+        //判断是否是修改数据
+        for (let i = 0; i < bucket.length; i++) {
+          var tuple = bucket[i]
+          if (tuple[0] === key) {
+            tuple[1] = value
+            return
+          }
+        }
+        bucket.push([key, value])
+        this.count += 1
+      }
+      //获取
+      HashTable.prototype.get = function (key) {
+        //根据key获取对应的index
+        var index = this.hashFunc(key, this.limit)
+        //根据index取出对应的bucket
+        var bucket = this.storage[index]
+        //判断该bucket是否为null
+        if (bucket == null) {
+          bucket = []
+          this.storage[index] = bucket
+        }
+
+        for (let i = 0; i < bucket.length; i++) {
+          var tuple = bucket[i]
+          if (tuple[0] === key) {
+            return tuple[1]
+          }
+        }
+        return null
+      }
+      //删除
+      HashTable.prototype.remove = function (key) {
+        //根据key获取对应的index
+        var index = this.hashFunc(key, this.limit)
+        //根据index取出对应的bucket
+        var bucket = this.storage[index]
+        //判断该bucket是否为null
+        if (bucket == null) {
+          bucket = []
+          this.storage[index] = bucket
+        }
+
+        //线性查找并且删除
+        for (let i = 0; i < bucket.length; i++) {
+          var tuple = bucket[i]
+          if (tuple[0] === key) {
+            bucket.splice(i, 1)
+            this.count -= 1
+            return tuple[1]
+          }
+        }
+        //依然没找到
+        return null
+      }
+      //判断哈希表是否为空
+      HashTable.prototype.isEmpty = function (key) {
+        return this.count === 0
+      }
+
+      HashTable.prototype.size = function (key) {
+        return this.count
+      }
+    }
+
+    let ht = new HashTable()
+    ht.put('went', '1951002')
+    ht.put('lx', '1951105')
+
+
+    console.log('===', ht.get('went'));
+
+  </script>
+</body>
+
+</html>
