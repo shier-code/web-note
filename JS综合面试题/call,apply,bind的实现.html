@@ -1,0 +1,67 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2022-01-17 09:58:11
+ * @LastEditors: went
+ * @LastEditTime: 2022-01-17 14:56:34
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    //call的实现
+
+    Function.prototype.myCall = function (context, ...args) {             //apply:  第二个参数可以不传，但类型必须为数组或者类数组
+      var ctx = context || window
+      var args = args || []
+      //将当前被调用的方法定义在cxt.func上.(为了能以对象调用形式绑定this)
+      //新建一个唯一的Symbol变量避免重复
+      var func = Symbol()
+      ctx[func] = this
+      console.log('this....', this);//this指向调用的方法即Foo
+      //以对象调用形式调用func,此时this指向cxt 也就是传入的需要绑定的this指向
+      let res = args.length > 0 ? ctx[func](...args) : cts[func]()
+      //删除该方法，不然会对传入对象造成污染（添加该方法）
+      delete ctx[func]
+      return res
+    }
+    let obj = {
+      name: 'sheir'
+    }
+    function Foo(friend) {
+      console.log(this.name + friend);
+
+    }
+    // Foo.myCall(obj, 'shier')
+
+
+    Function.prototype.myBind = function (context, ...args) {
+      //新建一个变量赋值为this，表示当前函数
+      const fn = this
+      //判断有没有传参进来，若为空则赋值[]
+      args = args ? args : []
+      //返回一个newFn函数，在里面调用fn
+
+      return function newFn(...newFnArgs) {
+        if (this instanceof newFn) {
+          return new fn(...args, ...newFnArgs)
+        }
+        return fn.apply(context, [...args, ...newFnArgs])
+      }
+    }
+    let foo = Foo.bind(obj, ['luoxue'])
+    foo('with')
+  </script>
+</body>
+
+</html>

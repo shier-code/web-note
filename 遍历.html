@@ -1,34 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-09-01 21:55:08
+ * @LastEditors: went
+ * @LastEditTime: 2022-01-11 10:47:00
+-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<style type="text/css">	
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<style type="text/css">
+	</style>
 </head>
 
 <body>
-<div>
-	<p>
-	<test></test>
-	</p>
-	<div></div>
-	<p></p>
-</div>
+	<div>
+		<p>
+			<test></test>
+		</p>
+		<div></div>
+		<p></p>
+	</div>
 
 </body>
 <script>
-const obj={   
-	name:'shier',
-	age:187,
-	height:188,
-	long:18
-}
-for(let i of Object.keys(obj)){
-	console.log(i);
-	console.log('wwwwwww')
-}
+	const obj = {
+		name: 'shier',
+		age: 187,
+		height: 188,
+		long: 18
+	}
+	for (let i of Object.keys(obj)) {
+		console.log(i);
+		console.log('wwwwwww')
+	}
 
+	var obj = {}, newArr, arr = [1, 2, 3, 4, 5, 3, 2, 1];
+	for (var i = arr.length - 1; i >= 0; i--) {
+		obj[arr[i]] = null;
+	};
+	console.log('obj', obj);
 
+	newArr = Object.keys(obj);
+	console.log(newArr)
 </script>
+
 </html>

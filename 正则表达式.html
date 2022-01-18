@@ -1,32 +1,69 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-09-01 21:55:08
+ * @LastEditors: went
+ * @LastEditTime: 2022-01-11 16:54:38
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<script>
-    var reg=new RegExp('^a');
-    console.log(reg.test('ab'));
+    <script>
+        var reg = new RegExp('^a');
+        console.log(reg.test('ab'));
 
-    var matchReg=/[a-z]ig/;
-    var str="213avv43434vaa";
-    resultReg=str.match(/[a-z]{3}/ig);
-    console.log(resultReg);
+        var matchReg = /[a-z]ig/;
+        var str = "213avv43434vaa";
+        resultReg = str.match(/[a-z]{3}/ig);
+        console.log(resultReg);
 
-    var phoneReg=/^1[3-9][0-9]{9}$/;          //手机号码
-    console.log(phoneReg.test('13213123213'))  
+        var phoneReg = /^1[3-9][0-9]{9}$/;          //手机号码
+        console.log(phoneReg.test('13213123213'))
 
-    var spaceStr="      hello      ";
-    var spaceReg=/^\s*|$\s*/g;
-    var newSpaceStr=spaceStr.replace(spaceReg,'');
-    console.log(newSpaceStr);
+        var spaceStr = "      hello      ";
+        var spaceReg = /^\s*|$\s*/g;
+        var newSpaceStr = spaceStr.replace(spaceReg, '');
+        console.log(newSpaceStr);
 
-    var emailReg=/^\w{2,}(\.\w)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;     //邮箱
-    var email='4637463643@qq.com';
-    console.log(emailReg.test(email))
-</script>    
+        var emailReg = /^\w{2,}(\.\w)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;     //邮箱
+        var email = '4637463643@qq.com';
+        console.log(emailReg.test(email))
+
+
+        const text = "sst,cat,bat";
+        const pattern = /.at/g;
+
+        console.log(text.split(pattern))
+        console.log(text.match(pattern))
+        console.log(text.replace(/s{2}/g, 'a'))
+
+        console.log(pattern.test(text))
+        const phone = /^[3-9][0-9]{9}$/;
+        console.log(phone.test('15161616156'));
+        const space = " 111  111 ";
+        // console.log(space.replace(/^\s*|\s*$/g,''))
+        console.log(space.replace(/\s/g, ''))
+        // const email=/^\w{3,}(\.\w+)*@([0-9a-Z]+)(\.[A-z]{2,6}){1,2}$/;
+        const email2 = /^\w{3,}(\.\w+)*@([0-9A-z]+)(\.[A-z]{2,6}){1,2}$/
+        console.log(email2.test("8787878@qq.com"))
+
+
+
+
+        var reg = /\bjohn\b/
+        var str = 'i am john'
+        console.log('==========', reg.test(str));
+
+    </script>
 </body>
+
 </html>
