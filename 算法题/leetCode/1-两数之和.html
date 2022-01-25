@@ -1,0 +1,52 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2022-01-20 16:53:40
+ * @LastEditors: went
+ * @LastEditTime: 2022-01-20 17:29:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // var twoSum = function (nums, target) {
+    //   var map = new Map()
+    //   for (var i = 0; i < nums.length; i++) {
+    //     var component = target - nums[i]
+    //     if (map.has(component)) {
+    //       return [map.get(component), i]
+    //     } else {
+    //       map.set(nums[i], i)
+    //     }
+    //   }
+    //   return []
+    // }
+    var twoSum = function (nums, target) {
+      var map = new Map()
+      for (var i = 0; i < nums.length; i++) {
+        var component = target - nums[i]
+        for (var j = i + 1; j < nums.length; j++) {
+          if (nums[j] === component) {
+            return [j, i]
+          }
+        }
+
+      }
+      return []
+    }
+    console.log(twoSum([3, 2, 4], 6));
+
+
+  </script>
+</body>
+
+</html>
