@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2020-09-01 21:55:08
  * @LastEditors: went
- * @LastEditTime: 2021-07-08 16:50:25
+ * @LastEditTime: 2022-02-09 09:29:32
 -->
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,6 +24,16 @@
             { name: "luoxue", age: 10 },
             { name: "baby", age: 10 }
         ]
+        var undefined = {
+            undefined: 'shier',
+            age: 19,
+            null: undefined
+        }
+        for (const key in undefined) {
+            console.log('======', undefined[key]);//不执行循环体
+        }
+        console.log('00000000',Object.keys(arrobj[0]));
+        
         var mapArr = arrobj.map(function (item) {
             return item.name = "baby";
         })

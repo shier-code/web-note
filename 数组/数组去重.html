@@ -1,3 +1,11 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2020-09-01 21:55:08
+ * @LastEditors: went
+ * @LastEditTime: 2022-02-09 14:21:04
+-->
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +17,8 @@
 
 <body>
     <script>
-        var arr = [3,2, 3, 3, 3, 1, 1, 6, 4];
+        //https://github.com/mqyqingfeng/Blog/issues/27
+        var arr = [3, 2, 3, 3, 3, 1, 1, 6, 4];
         for (var i = 0; i < arr.length; i++) {
             for (var j = 0; j < i; j++) {
                 if (arr[j] === arr[j + 1]) {
@@ -18,14 +27,8 @@
                 }
             }
         }
-       for(var i=0;i<arr.length;i++){
-           for(var j=0;j<i;j++){
+        console.log('=====', [...new Set([1, 2, 2, 3, 1])]);
 
-           }
-       }
-        console.log(arr);
-         console.log('=====',[...new Set([1,2,2,3,1])]);
-         
         // 不能过滤掉NaN,obj
         var arr2 = [1, 1, null, null, NaN, NaN, {}, {}]
         for (var x = 0; x < arr2.length; x++) {
@@ -37,32 +40,75 @@
             }
         }
         console.log(arr2);
+        //双重循环
+        var array = [1, 1, '1', '1'];
+        function unique(array) {
+            // res用来存储结果
+            var res = [];
+            for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
+                for (var j = 0, resLen = res.length; j < resLen; j++) {
+                    if (array[i] === res[j]) {
+                        break;
+                    }
+                }
+                // 如果array[i]是唯一的，那么执行完循环，j等于resLen
+                if (j === resLen) {
+                    res.push(array[i])
+                }
+            }
+            return res;
+        }
 
-        var arr3 = [1, 1, null, null, NaN, NaN, {}, {}]
+        console.log(unique(array)); // [1, "1"]
+        //indexOf
+        var array = [1, 1, '1'];
+        function unique(array) {
+            var res = [];
+            for (var i = 0, len = array.length; i < len; i++) {
+                var current = array[i];
+                if (res.indexOf(current) === -1) {
+                    res.push(current)
+                }
+            }
+            return res;
+        }
+
+        console.log(unique(array));
+        //filter
+        var array = [1, 2, 1, 1, '1'];
+        function unique(array) {
+            var res = array.filter(function (item, index, array) {
+                return array.indexOf(item) === index;
+            })
+            return res;
+        }
+        console.log(unique(array));
+
+        //Object.keys()        1 和 '1' 是不同的，但是这种方法会判断为同一个值 ,无法正确区分出两个对象
+        var arr3 = [1, '1', null, null, NaN, NaN, {}, {}]
 
         function distinct(arr) {
             var newArr = [];
             var obj = {};
             for (var i = 0; i < arr.length; i++) {
-                console.log(obj[arr[i]]);
                 if (!obj[arr[i]]) {
-
-
                     obj[arr[i]] = 1;
                     newArr.push(arr[i])
                 }
             }
             return newArr
-
         }
         console.log(distinct(arr3))
+        //优化
+        var array = [{ value: 1 }, { value: 1 }, { value: 2 }];
 
-
-        var objtest = {
-            name: 'wentan',
-            age: 18
+        function unique(array) {
+            var obj = {};
+            return array.filter(function (item, index, array) {
+                console.log(typeof item + JSON.stringify(item))
+                return obj.hasOwnProperty(typeof item + JSON.stringify(item)) ? false : (obj[typeof item + JSON.stringify(item)] = true)
+            })
         }
-        console.log()
     </script>
 </body>
 

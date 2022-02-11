@@ -1,0 +1,54 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2022-02-09 16:52:08
+ * @LastEditors: went
+ * @LastEditTime: 2022-02-10 17:26:00
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function ListNode(val) {
+      this.val = val
+      this.next = null
+    }
+    var addTwo = function (l1, l2) {
+      var dummy = new ListNode()
+      var current = dummy
+      var carry = 0
+      while (l1 !== null && l2 !== null) {
+        var sum = 0
+        if (l1 !== null) {
+          sum += l1.val
+          l1 = l1.next
+        }
+        if (l2 !== null) {
+          sum += l2.val
+          l2 = l2.next
+        }
+        sum += carry
+        current.next = new ListNode(sum % 10)
+        carry = Math.floor(sum / 10)
+        current = current.next
+      }
+      if (carry > 0) {
+        current.next = new ListNode(carry)
+      }
+      return dummy.next
+    }
+
+    console.log(addTwo(new ListNode(1), new ListNode(2)))
+
+  </script>
+</body>
+
+</html>
