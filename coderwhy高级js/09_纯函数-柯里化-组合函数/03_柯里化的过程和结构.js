@@ -4,11 +4,11 @@
  * @Author: went
  * @Date: 2022-01-26 13:46:29
  * @LastEditors: went
- * @LastEditTime: 2022-01-26 14:07:59
+ * @LastEditTime: 2022-02-15 10:58:07
  */
 
 //柯里化：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩余参数
-//让函数的职责单一
+//让函数的职责单一，不被其他参数分散注意力
 function add(x, y, z) {
   return x + y + z
 }

@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2022-02-08 11:09:12
  * @LastEditors: went
- * @LastEditTime: 2022-02-10 10:35:46
+ * @LastEditTime: 2022-02-15 09:30:24
  */
 var obj = {
   name: 'shier',
@@ -22,6 +22,6 @@ console.log(Object.prototype.__proto__);  //原型链终点null
 
 console.log(Object.getOwnPropertyDescriptors(obj)); //打印对象虽有的属性修饰符，不管是不是可枚举属性
 
-console.log('-------', Object.getOwnPropertyNames(obj));//获取自生所有
+console.log('-------', Object.getOwnPropertyNames(obj));//获取自身所有
 console.log('-------', obj);
 

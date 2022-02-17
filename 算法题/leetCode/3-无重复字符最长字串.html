@@ -1,0 +1,51 @@
+<!--
+ * @Desc: 
+ * @Version: v1.00
+ * @Author: went
+ * @Date: 2022-02-15 16:32:00
+ * @LastEditors: went
+ * @LastEditTime: 2022-02-16 10:42:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    function lengthOfLongestSubstring(s) {
+      var set = new Set()
+      var i = 0, j = 0, maxLength = 0
+      if (s.length === 0) {
+        return 0
+      }
+      for (i; i < s.length; i++) {
+
+        if (!set.has(s[i])) {
+          set.add(s[i])
+          maxLength = Math.max(maxLength, set.size)
+        } else {
+          while (set.has(s[i])) {
+            set.delete(s[j])
+            j++
+          }
+          set.add(s[i])
+        }
+      }
+      return maxLength
+    }
+    console.log('--', lengthOfLongestSubstring('abdsacs'));
+
+    var str = 'abc'
+    console.log(str[1]);
+
+  </script>
+</body>
+
+</html>
