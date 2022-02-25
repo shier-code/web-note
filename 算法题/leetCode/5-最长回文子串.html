@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2021-10-27 19:04:42
  * @LastEditors: went
- * @LastEditTime: 2021-10-27 19:35:29
+ * @LastEditTime: 2022-02-22 17:39:48
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -18,36 +18,61 @@
 <body>
   <script>
 
+    // function longString(s) {
+    //   let len = s.length
+    //   if (len < 2) {
+    //     return s
+    //   }
+    //   let maxLen = 1;
+    //   let begin = 0
+    //   let charArray = s.split('')
+    //   for (let i = 0; i < len - 1; i++) {
+    //     for (let j = i + 1; j < len; j++) {
+    //       if (j - i + 1 > maxLen && validPalid(charArray, i, j)) {
+    //         maxLen = j - i + 1
+    //         begin = i
+    //       }
+    //     }
+    //   }
+    //   return s.slice(begin, begin + maxLen)
+    // }
+    // function validPalid(charArray, left, right) {
+    //   while (left < right) {
+    //     if (charArray[left] !== charArray[right]) {
+    //       return false
+    //     }
+    //     left++;
+    //     right--
+    //   }
+    //   return true
+    // }
+    // let res = longString('asabaewe')
+    // console.log('res==', res);
     function longString(s) {
-      let len = s.length
-      if (len < 2) {
+      if (s.length < 2) {
         return s
       }
-      let maxLen = 1;
-      let begin = 0
-      let charArray = s.split('')
-      for (let i = 0; i < len - 1; i++) {
-        for (let j = i + 1; j < len; j++) {
-          if (j - i + 1 > maxLen && validPalid(charArray, i, j)) {
-            maxLen = j - i + 1
-            begin = i
+      let start = 0;
+      let maxLenth = 1
+
+      function expandAroundCenter(left, right) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+          if (right - left + 1 > maxLenth) {
+            maxLenth = right - left + 1
+            start = left
           }
+
+          left--
+          right++
+
         }
       }
-      return s.slice(begin, begin + maxLen)
-    }
-    function validPalid(charArray, left, right) {
-      while (left < right) {
-        if (charArray[left] !== charArray[right]) {
-          return false
-        }
-        left++;
-        right--
+      for (let i = 0; i < s.length; i++) {
+        expandAroundCenter(i - 1, i + 1)
+        expandAroundCenter(i, i + 1)
       }
-      return true
+      return s.substring(start, start + maxLenth)
     }
-    let res = longString('asabaewe')
-    console.log('res==', res);
 
   </script>
 
