@@ -17,7 +17,7 @@ class Person {
 }
 
 class Student extends Person {
-  //在子类狗赞函数使用this或返回对象之前，必须通过super调用父类构造函数
+  //在子类构造函数使用this或返回对象之前，必须通过super调用父类构造函数
   constructor(name, age, sno) {
     super(name, age)
     this.sno = sno

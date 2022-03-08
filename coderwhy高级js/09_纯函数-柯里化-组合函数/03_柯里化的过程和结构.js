@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2022-01-26 13:46:29
  * @LastEditors: went
- * @LastEditTime: 2022-02-15 10:58:07
+ * @LastEditTime: 2022-02-28 14:35:08
  */
 
 //柯里化：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩余参数
@@ -34,6 +34,18 @@ function makeAdder(count) {
     return count + num
   }
 }
-var add5=makeAdder(5)
+var add5 = makeAdder(5)
 add5(10)
 add5(20)
+
+let tobj = [
+
+  {
+    grade: "",
+    class: "",
+    sort1: {
+      moonDiff: "",  
+    }
+
+  }
+]
