@@ -4,7 +4,7 @@
  * @Author: went
  * @Date: 2022-03-08 16:55:34
  * @LastEditors: went
- * @LastEditTime: 2022-03-08 17:21:34
+ * @LastEditTime: 2022-03-09 16:24:30
  */
 const iterableObj = {
   names: ['shier', 'lx', 'tom'],
@@ -21,6 +21,7 @@ const iterableObj = {
     }
   }
 }
+
 
 //for of可以看成iterableObj[Symbol.iterator]().next().value
 console.log(iterableObj[Symbol.iterator]().next().value);

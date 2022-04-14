@@ -27,6 +27,6 @@ promise.then(res => {   //
   throw new Error('err in inner promise');
 }
 ).catch(err => {
-  console.log(err);  //catch是ES6自身的实现，不符合promise a+规范，
+  console.log('err', err);  //catch是ES6自身的实现，不符合promise a+规范，
 })
 
